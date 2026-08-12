@@ -125,3 +125,24 @@ O site está em desenvolvimento e será publicado oficialmente em
 ---
 
 © LEMS Logic. Todos os direitos reservados.
+
+## Deploy — Cloudflare Pages
+
+O site é exportado como HTML/CSS/JS estáticos por meio de `output: "export"`.
+
+```bash
+npm run build
+```
+
+A saída é gerada em `out/`.
+
+Configuração de produção no Cloudflare Pages:
+
+```text
+Framework preset: Next.js (Static HTML Export)
+Build command: npx next build
+Build output directory: out
+Production branch: main
+```
+
+Veja `docs/CLOUDFLARE_PAGES.md` para o passo a passo.
