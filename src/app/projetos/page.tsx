@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { buildPageMetadata } from "@/lib/metadata";
@@ -5,18 +6,20 @@ import { buildPageMetadata } from "@/lib/metadata";
 export const metadata = buildPageMetadata({
   title: "Projetos",
   description:
-    "Conheça os projetos demonstrativos e cases em desenvolvimento pela LEMS Logic nas áreas de sistemas, automação, dados e tecnologia empresarial.",
+    "Conheça os projetos demonstrativos da LEMS Logic, incluindo o LEMS Gestão: ERP empresarial com financeiro, DRE gerencial, fluxo de caixa, cadastros, relatórios e controle de acessos.",
   path: "/projetos",
 });
+
+const githubUrl = "https://github.com/lemslogic/lems-gestao";
 
 const roadmap = [
   {
     n: "01",
-    status: "Em desenvolvimento",
+    status: "Demo disponível",
     title: "LEMS Gestão",
     description:
-      "Sistema demonstrativo de gestão empresarial criado para apresentar como processos financeiros e administrativos podem ser centralizados em uma aplicação própria.",
-    tags: ["Financeiro", "Cadastros", "Dashboards", "Relatórios"],
+      "ERP empresarial demonstrativo com gestão financeira, DRE Gerencial, fluxo de caixa, cadastros, relatórios e controle de acessos.",
+    tags: ["ERP", "Financeiro", "DRE", "PostgreSQL"],
     stage: "Projeto principal",
   },
   {
@@ -46,6 +49,15 @@ const roadmap = [
     tags: ["BI", "Dashboards", "KPIs", "Relatórios"],
     stage: "Próximo case",
   },
+];
+
+const features = [
+  ["Financeiro", "Contas a pagar e receber, movimentações, categorias e visão financeira consolidada."],
+  ["Fluxo de caixa", "Visão realizada e projetada com compromissos futuros e evolução do saldo."],
+  ["DRE Gerencial", "Modelo gerencial por competência com agrupamentos de receitas, custos e despesas."],
+  ["Cadastros", "Clientes, fornecedores e usuários integrados aos lançamentos e ao histórico financeiro."],
+  ["Acessos", "Login, sessões persistidas e perfis ADMIN, MANAGER e USER com permissões server-side."],
+  ["Relatórios", "Visões gerenciais de contas, fluxo de caixa, indicadores e desempenho econômico."],
 ];
 
 const principles = [
@@ -99,7 +111,7 @@ export default function ProjectsPage() {
               Soluções que saem da ideia e viram <span className="gradient-text">produto demonstrável.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-white/62">
-              O portfólio da LEMS Logic será construído com projetos que mostram problemas reais, decisões de produto e como tecnologia pode organizar uma operação.
+              O portfólio da LEMS Logic reúne projetos autorais que demonstram problemas reais, decisões de produto e como tecnologia pode organizar uma operação.
             </p>
             <div className="mobile-actions mt-9">
               <Link href="#lems-gestao" className="btn-primary">Conhecer o LEMS Gestão <span aria-hidden>↓</span></Link>
@@ -112,13 +124,13 @@ export default function ProjectsPage() {
             <div className="relative">
               <div className="flex items-center justify-between gap-4">
                 <span className="text-xs uppercase tracking-[.22em] text-white/45">Portfólio / visão</span>
-                <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[.18em] text-[#55e694]"><i className="h-1.5 w-1.5 rounded-full bg-[#55e694] shadow-[0_0_12px_rgba(85,230,148,.8)]" /> Em construção</span>
+                <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[.18em] text-[#55e694]"><i className="h-1.5 w-1.5 rounded-full bg-[#55e694] shadow-[0_0_12px_rgba(85,230,148,.8)]" /> Demo publicada</span>
               </div>
               <div className="mt-7 h-56 rounded-2xl border border-white/10 bg-black/10 p-2 md:h-64">
                 <ProjectMark />
               </div>
               <div className="mt-6 grid gap-3 sm:grid-cols-3">
-                {[["01", "Principal"], ["03", "Próximos"], ["100%", "Autorais"]].map(([value, label]) => (
+                {[["01", "Demo pronta"], ["03", "Próximos"], ["100%", "Autorais"]].map(([value, label]) => (
                   <div key={label} className="rounded-2xl border border-white/10 bg-black/10 p-4">
                     <strong className="block text-xl text-white">{value}</strong>
                     <span className="mt-1 block text-xs uppercase tracking-[.12em] text-white/35">{label}</span>
@@ -135,31 +147,41 @@ export default function ProjectsPage() {
           <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
             <div className="max-w-3xl">
               <span className="tag">Projeto em destaque</span>
-              <h2 className="section-title mt-5">LEMS Gestão. <span className="gradient-text">Nosso primeiro case demonstrativo.</span></h2>
-              <p className="section-copy mt-5">Um sistema empresarial criado para demonstrar de forma prática como informações financeiras e administrativas podem sair de controles dispersos e ganhar uma operação centralizada.</p>
+              <h2 className="section-title mt-5">LEMS Gestão. <span className="gradient-text">ERP empresarial demonstrativo.</span></h2>
+              <p className="section-copy mt-5">Um ERP autoral desenvolvido para demonstrar como processos financeiros e administrativos podem sair de controles dispersos e ganhar uma operação centralizada, segura e preparada para evoluir.</p>
             </div>
-            <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[#55e694]/20 bg-[#55e694]/[.055] px-4 py-2 text-sm text-[#83f2b3]"><span className="h-2 w-2 rounded-full bg-[#55e694] shadow-[0_0_12px_rgba(85,230,148,.7)]" /> Em desenvolvimento</span>
+            <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[#55e694]/20 bg-[#55e694]/[.055] px-4 py-2 text-sm text-[#83f2b3]"><span className="h-2 w-2 rounded-full bg-[#55e694] shadow-[0_0_12px_rgba(85,230,148,.7)]" /> Demo disponível</span>
           </div>
 
-          <div className="mt-12 grid gap-5 lg:grid-cols-[1.15fr_.85fr]">
+          <div className="mt-12 overflow-hidden rounded-[28px] border border-white/10 bg-white/[.025] p-2 shadow-[0_30px_90px_rgba(0,0,0,.22)] md:p-3">
+            <div className="overflow-hidden rounded-[21px] border border-white/10 bg-[#071116]">
+              <Image
+                src="/projects/lems-gestao-dashboard.png"
+                alt="Dashboard do ERP demonstrativo LEMS Gestão"
+                width={1920}
+                height={998}
+                priority
+                sizes="(max-width: 1200px) 100vw, 1120px"
+                className="h-auto w-full"
+              />
+            </div>
+          </div>
+          <p className="mt-3 text-center text-xs uppercase tracking-[.16em] text-white/30">Dashboard real da versão demonstrável</p>
+
+          <div className="mt-10 grid gap-5 lg:grid-cols-[1.15fr_.85fr]">
             <article className="project-feature relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[.035] p-7 md:p-10">
               <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#20d7df]/10 blur-3xl" />
               <div className="relative">
                 <div className="flex items-center justify-between gap-5">
                   <div>
-                    <div className="text-xs uppercase tracking-[.22em] text-[#55e694]">Gestão empresarial</div>
-                    <h3 className="mt-3 text-3xl font-black tracking-[-.035em] md:text-4xl">Do financeiro ao indicador.</h3>
+                    <div className="text-xs uppercase tracking-[.22em] text-[#55e694]">LEMS Gestão / v1.0 Demo</div>
+                    <h3 className="mt-3 text-3xl font-black tracking-[-.035em] md:text-4xl">Gestão financeira com estrutura de ERP.</h3>
                   </div>
                   <span className="hidden text-5xl font-black tracking-[-.06em] text-white/[.05] sm:block">01</span>
                 </div>
 
                 <div className="mt-9 grid gap-3 sm:grid-cols-2">
-                  {[
-                    ["Financeiro", "Contas a pagar, receber e visão de fluxo"],
-                    ["Cadastros", "Clientes, fornecedores e informações base"],
-                    ["Dashboard", "Indicadores para leitura rápida da operação"],
-                    ["Relatórios", "Dados organizados para conferência e análise"],
-                  ].map(([title, text]) => (
+                  {features.map(([title, text]) => (
                     <div key={title} className="rounded-2xl border border-white/10 bg-black/10 p-5">
                       <span className="text-sm font-bold text-white">{title}</span>
                       <p className="mt-2 text-sm leading-6 text-white/45">{text}</p>
@@ -169,27 +191,28 @@ export default function ProjectsPage() {
 
                 <div className="mt-8 border-t border-white/10 pt-7">
                   <div className="text-xs uppercase tracking-[.18em] text-white/35">Objetivo do projeto</div>
-                  <p className="mt-3 max-w-3xl leading-7 text-white/60">Mostrar como uma aplicação interna pode ser desenhada em torno da rotina da empresa, com módulos que conversam entre si e uma estrutura preparada para evoluir.</p>
+                  <p className="mt-3 max-w-3xl leading-7 text-white/60">Demonstrar uma arquitetura empresarial de ponta a ponta: interface, regras de negócio, banco de dados, autenticação, permissões, relatórios e ambiente reproduzível com Docker.</p>
                 </div>
               </div>
             </article>
 
             <div className="grid gap-5">
               <article className="card">
-                <div className="text-xs uppercase tracking-[.18em] text-white/35">Stack planejada</div>
+                <div className="text-xs uppercase tracking-[.18em] text-white/35">Stack utilizada</div>
                 <div className="mt-5 flex flex-wrap gap-2">
-                  {["Next.js", "TypeScript", "Tailwind CSS", "Banco de dados", "Docker"].map((tech) => <span key={tech} className="rounded-full border border-white/10 bg-white/[.035] px-3 py-2 text-sm text-white/65">{tech}</span>)}
+                  {["Next.js", "React", "TypeScript", "Tailwind CSS", "PostgreSQL", "Prisma", "Docker"].map((tech) => <span key={tech} className="rounded-full border border-white/10 bg-white/[.035] px-3 py-2 text-sm text-white/65">{tech}</span>)}
                 </div>
-                <p className="mt-5 text-sm leading-6 text-white/40">A stack pode evoluir conforme os requisitos reais do sistema forem definidos.</p>
+                <p className="mt-5 text-sm leading-6 text-white/40">Projeto público de portfólio com setup local, migrations, seed demonstrativo e documentação.</p>
               </article>
 
               <article className="card">
-                <div className="text-xs uppercase tracking-[.18em] text-white/35">O que o case vai mostrar</div>
-                <div className="mt-5 space-y-4">
-                  {["Contexto e problema", "Arquitetura e decisões", "Interface e funcionalidades", "Código e documentação"].map((item) => (
-                    <div key={item} className="flex items-center gap-3 text-white/65"><span className="flex h-6 w-6 items-center justify-center rounded-full border border-[#20d7df]/20 bg-[#20d7df]/[.05] text-xs text-[#20d7df]">✓</span>{item}</div>
+                <div className="text-xs uppercase tracking-[.18em] text-white/35">Explorar o projeto</div>
+                <div className="mt-5 space-y-4 text-white/65">
+                  {["Código e arquitetura", "Schema e migrations", "Documentação de setup", "Roteiro de demonstração"].map((item) => (
+                    <div key={item} className="flex items-center gap-3"><span className="flex h-6 w-6 items-center justify-center rounded-full border border-[#20d7df]/20 bg-[#20d7df]/[.05] text-xs text-[#20d7df]">✓</span>{item}</div>
                   ))}
                 </div>
+                <a href={githubUrl} target="_blank" rel="noreferrer" className="btn-primary mt-7 w-full justify-center">Ver no GitHub <span aria-hidden>↗</span></a>
               </article>
             </div>
           </div>
@@ -201,17 +224,17 @@ export default function ProjectsPage() {
           <div className="max-w-3xl">
             <span className="tag">Roadmap</span>
             <h2 className="section-title mt-5">Portfólio construído <span className="gradient-text">projeto por projeto.</span></h2>
-            <p className="section-copy mt-5">Em vez de preencher a página com projetos fictícios, a LEMS Logic vai publicar cada case conforme ele ganhar uma demonstração realmente utilizável.</p>
+            <p className="section-copy mt-5">Em vez de preencher a página com projetos fictícios, a LEMS Logic publica cada case conforme ele ganha uma demonstração realmente utilizável.</p>
           </div>
 
           <div className="mt-12 grid gap-4 md:grid-cols-2">
             {roadmap.map((project) => (
-              <article key={project.n} className="project-card group relative md:min-h-[330px] overflow-hidden rounded-[24px] border border-white/10 bg-white/[.03] p-7 transition hover:-translate-y-1 hover:border-[#20d7df]/30 hover:bg-white/[.042]">
+              <article key={project.n} className="project-card group relative overflow-hidden rounded-[24px] border border-white/10 bg-white/[.03] p-7 transition hover:-translate-y-1 hover:border-[#20d7df]/30 hover:bg-white/[.042] md:min-h-[330px]">
                 <div className="absolute right-0 top-0 h-40 w-40 bg-[radial-gradient(circle,rgba(32,215,223,.08),transparent_68%)]" />
                 <div className="relative flex h-full flex-col">
                   <div className="flex items-center justify-between gap-4">
                     <span className="text-sm tracking-[.16em] text-[#20d7df]">{project.n}</span>
-                    <span className={`rounded-full border px-3 py-1 text-xs ${project.status === "Em desenvolvimento" ? "border-[#55e694]/20 bg-[#55e694]/[.05] text-[#83f2b3]" : "border-white/10 bg-white/[.025] text-white/38"}`}>{project.status}</span>
+                    <span className={`rounded-full border px-3 py-1 text-xs ${project.status === "Demo disponível" ? "border-[#55e694]/20 bg-[#55e694]/[.05] text-[#83f2b3]" : "border-white/10 bg-white/[.025] text-white/38"}`}>{project.status}</span>
                   </div>
                   <div className="mt-9 text-xs uppercase tracking-[.18em] text-white/32">{project.stage}</div>
                   <h3 className="mt-3 text-2xl font-black tracking-[-.025em]">{project.title}</h3>
